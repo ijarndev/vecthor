@@ -1,0 +1,37 @@
+:root{
+    --primary: #303030;
+    --secondary: #d3d3d3;
+
+    background: var(--primary);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#navbar {
+    position: fixed;
+    width: 80%;
+    left: 20px;
+    bottom: 20px;
+    border-radius: 8px;
+    display: flex;
+    gap: 2px;
+    align-items: left;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-width: 120px;
+}
+
+body {
+    height: 100vh;
+}
+
+#render-btn, #wipe-btn{
+    height: 40px;
+}
+
+#canvas {
+    background: var(--primary);
+}
