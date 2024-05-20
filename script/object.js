@@ -23,23 +23,34 @@ class Vector {
         ctx.closePath()
         ctx.stroke()
 
-        const rootDot = new Dot(this.coords.x, this.coords.y).render(0)
-        const tipDot = new Dot(this.origins.x, this.origins.y).render()
+        new Dot(this.origins.x, this.origins.y).render()
+        new Dot(this.coords.x, this.coords.y).render()
     }
 }
 
 class Coordinates {
-    constructor(tileset) {
+    constructor(tileset, range) {
         this.originX = cw / 2
         this.originY = ch / 2
         this.vx = cw
         this.vy = ch
-        this.unitsX = Math.floor(this.vx / SYSTEM_GAP) + 1
-        this.unitsY = Math.floor(this.vy / SYSTEM_GAP) + 1
-        this.tileset = tileset
-        this.offsetX = cw - (tileset.x * SYSTEM_GAP)
-        this.offsetY = ch - (tileset.y * SYSTEM_GAP)
+        this.gap = range
+        this.unitsX = Math.floor(this.vx / this.gap) + 1
+        this.unitsY = Math.floor(this.vy / this.gap) + 1
+        this.tileset = { x: Math.floor(screen.width / this.gap), y: Math.floor(screen.height / this.gap) }
+        this.offsetX = cw - (tileset.x * this.gap)
+        this.offsetY = ch - (tileset.y * this.gap)
+
+        if(this.tileset.x %2 === 0) this.tileset.x -= 1
+
+        console.log(`x-length: ${this.tileset.x}`)
+        console.log(`y-length: ${this.tileset.y}`)
+        console.log(`screen-x: ${cw}`)
+        console.log(`screen-y: ${ch}`)
+        console.log(`offset-x: ${cw - this.tileset.x * this.gap}`)
     }
+
+    // debug
 
     render() {
         ctx.beginPath()
@@ -57,27 +68,29 @@ class Coordinates {
         ctx.closePath()
 
         for(let i = 0; i < this.tileset.x; i++) {
-            const start = (i === 0) ? this.offsetX / 2 : i * SYSTEM_GAP + this.offsetX / 2
+            const pos = this.originX + this.gap * i
+            const neg = this.originX + this.gap * -i
 
+            ctx.fillStyle = 'yellow'
             ctx.font = '10px Courier'
-            ctx.fillStyle = 'yellow'
-            ctx.fillText('n', start, this.originY + 10)
 
-            ctx.fillStyle = 'yellow'
-            ctx.fillRect(start, this.originY, 2, -2)
+            ctx.fillText(i, pos, this.originY + 10)
+            ctx.fillText(-i, neg, this.originY + 10)
+            ctx.fillRect(pos, this.originY, 2, 2)
+            ctx.fillRect(neg, this.originY, 2, 2)
         }
 
         for(let i = 0; i < this.tileset.y; i++) {
-            const start = (i === 0) ? this.offsetY / 2 : i * SYSTEM_GAP + this.offsetY / 2
+            const pos = this.originY + this.gap * -i
+            const neg = this.originY + this.gap * i
 
-            console.log(this.tileset.y)
-
+            ctx.fillStyle = 'green'
             ctx.font = '10px Courier'
-            ctx.fillStyle = 'green'
-            ctx.fillText('n', this.originX - 10, start)
 
-            ctx.fillStyle = 'green'
-            ctx.fillRect(this.originX, start, 2, -2)
+            ctx.fillRect(this.originX, pos, 2, 2)
+            ctx.fillRect(this.originX, neg, 2, 2)
+            ctx.fillText(i, this.originX + 15, pos)
+            ctx.fillText(-i, this.originX + 15, neg)
         }
     }
 }

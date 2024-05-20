@@ -12,20 +12,58 @@
 
 #navbar {
     position: fixed;
-    width: 80%;
-    left: 20px;
-    bottom: 20px;
+    padding-right: 40px;
+    width: 100vw;
+    left: 0px;
+    bottom: 0px;
     border-radius: 8px;
     display: flex;
     gap: 2px;
     align-items: left;
+    justify-content: space-between;
     flex-wrap: wrap;
-    flex-direction: column;
-    max-width: 120px;
+    flex-direction: row;
+}
+
+
+#navbar input[type="number"] {
+    max-width: 20px;
+    padding: 10px;
+}
+
+#range {
+    width: 120px !important;
 }
 
 body {
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#render-btn {
+    background: #09f;
+    border: none;
+    padding: 0px 10px 0px 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+}
+
+#wipe-btn {
+    background: #ff6600;
+    border: none;
+    padding: 0px 10px 0px 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+}
+
+button { transition: 0.2s; }
+
+button:active {
+    transform: scale(0.95);
 }
 
 #render-btn, #wipe-btn{
@@ -34,4 +72,13 @@ body {
 
 #canvas {
     background: var(--primary);
+}
+
+.input-holder {
+    display: flex;
+}
+
+.range-holder {
+    display: flex;
+    align-items: center;
 }

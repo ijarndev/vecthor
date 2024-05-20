@@ -6,21 +6,27 @@ const INPUT = {
     component2: document.querySelector('#c2'),
     direction: document.querySelector('#dir'),
     renderBtn: document.querySelector('#render-btn'),
-    wipeBtn: document.querySelector('#wipe-btn')
+    wipeBtn: document.querySelector('#wipe-btn'),
+    range: document.querySelector('#range')
 }
 
-const SYSTEM_GAP = 20
+const SYSTEM_GAP = 50
 
-canvas.width = document.documentElement.clientWidth
-canvas.height = document.documentElement.clientHeight
-
-const cw = canvas.clientWidth
-const ch = canvas.clientHeight
+const SCREEN = {
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight
+}
 
 const TILES = {
-    x: Math.floor(cw / SYSTEM_GAP),
-    y: Math.floor(ch / SYSTEM_GAP)
+    x: Math.floor(screen.width / SYSTEM_GAP),
+    y: Math.floor(screen.height / SYSTEM_GAP)
 }
+
+canvas.width = TILES.x * SYSTEM_GAP
+canvas.height = TILES.y * SYSTEM_GAP
+
+const cw = canvas.width
+const ch = canvas.height
 
 const colors = {
     white: '#ffffff',
@@ -28,10 +34,10 @@ const colors = {
     blue: '#09f'
 }
 
-const coords = new Coordinates(TILES)
+const coords = new Coordinates(TILES, INPUT.range.value)
 coords.render()
 
-const v = new Vector(3, 4)
+const v = new Vector(3, 3)
 v.render()
 
 INPUT.renderBtn.addEventListener('click', () => {
@@ -42,4 +48,9 @@ INPUT.renderBtn.addEventListener('click', () => {
 INPUT.wipeBtn.addEventListener('click', () => {
     ctx.clearRect(0, 0, cw, ch)
     coords.render()
+})
+
+INPUT.range.addEventListener('change', () => {
+    ctx.clearRect(0, 0, cw, ch)
+    new Coordinates(TILES, INPUT.range.value).render()
 })
