@@ -27,7 +27,7 @@
 
 
 #navbar input[type="number"] {
-    max-width: 20px;
+    width: 50px;
     padding: 10px;
 }
 

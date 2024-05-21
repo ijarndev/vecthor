@@ -29,16 +29,32 @@ const cw = canvas.width
 const ch = canvas.height
 
 const colors = {
+    random: getRandom(['#ffffff', '#09f']),
     white: '#ffffff',
     gray: '#d3d3d330',
     blue: '#09f'
 }
 
-const coords = new Coordinates(TILES, INPUT.range.value)
-coords.render()
+function getRandom(array) {
+    return array[Math.floor(Math.random() * array.length)]
+}
+
+const COORDS = new Coordinates(TILES, INPUT.range.value)
+COORDS.render()
 
 const v = new Vector(3, 3)
 v.render()
+
+document.addEventListener('keyup', (e) => {
+    if(e.key === '1')
+        new Vector(Math.floor(Math.random() * TILES.x / 2), Math.floor(Math.random() * TILES.y / 2)).render()
+    if(e.key === '2')
+        new Vector(Math.floor(Math.random() * TILES.x / -2), Math.floor(Math.random() * TILES.y / 2)).render()
+    if(e.key === '3')
+        new Vector(Math.floor(Math.random() * TILES.x / -2), Math.floor(Math.random() * TILES.y / -2)).render()
+    if(e.key === '4')
+        new Vector(Math.floor(Math.random() * TILES.x / 2), Math.floor(Math.random() * TILES.y / -2)).render()
+})
 
 INPUT.renderBtn.addEventListener('click', () => {
     const vector = new Vector(INPUT.component1.value, INPUT.component2.value)
@@ -47,7 +63,7 @@ INPUT.renderBtn.addEventListener('click', () => {
 
 INPUT.wipeBtn.addEventListener('click', () => {
     ctx.clearRect(0, 0, cw, ch)
-    coords.render()
+    COORDS.render()
 })
 
 INPUT.range.addEventListener('change', () => {
