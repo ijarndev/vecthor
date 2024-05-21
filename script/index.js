@@ -10,7 +10,7 @@ const INPUT = {
     range: document.querySelector('#range')
 }
 
-const SYSTEM_GAP = 50
+const SYSTEM_GAP = 20
 
 const SCREEN = {
     width: document.documentElement.clientWidth,
@@ -18,8 +18,8 @@ const SCREEN = {
 }
 
 const TILES = {
-    x: Math.floor(screen.width / SYSTEM_GAP),
-    y: Math.floor(screen.height / SYSTEM_GAP)
+    x: Math.floor(SCREEN.width / SYSTEM_GAP),
+    y: Math.floor(SCREEN.height / SYSTEM_GAP)
 }
 
 canvas.width = TILES.x * SYSTEM_GAP

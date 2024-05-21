@@ -1,33 +1,3 @@
-class Vector {
-    constructor(x, y) {
-        this.gap = 20
-
-        this.origins = {
-            x: cw / 2,
-            y: ch / 2
-        }
-
-        this.coords = {
-            x: this.origins.x + x * this.gap,
-            y: this.origins.y - y * this.gap
-        }
-
-        ctx.beginPath()
-        ctx.moveTo(cw / 2, ch / 2)
-        ctx.strokeStyle = colors.blue
-        ctx.lineWidth = 2
-    }
-
-    render() {
-        ctx.lineTo(this.coords.x, this.coords.y)
-        ctx.closePath()
-        ctx.stroke()
-
-        new Dot(this.origins.x, this.origins.y).render()
-        new Dot(this.coords.x, this.coords.y).render()
-    }
-}
-
 class Coordinates {
     constructor(tileset, range) {
         this.originX = cw / 2
@@ -95,6 +65,50 @@ class Coordinates {
     }
 }
 
+class Vector {
+    constructor(x, y) {
+        this.gap = 20
+        this.posX = x
+        this.posY = y
+
+        this.origins = {
+            x: cw / 2,
+            y: ch / 2
+        }
+
+        this.coords = {
+            x: this.origins.x + x * this.gap,
+            y: this.origins.y - y * this.gap
+        }
+
+        ctx.beginPath()
+        ctx.moveTo(cw / 2, ch / 2)
+        ctx.strokeStyle = colors.blue
+        ctx.lineWidth = 2
+    }
+
+    render() {
+        ctx.lineTo(this.coords.x, this.coords.y)
+        ctx.closePath()
+        ctx.stroke()
+
+        new Dot(this.origins.x, this.origins.y).render()
+        new Dot(this.coords.x, this.coords.y).render()
+        new Leg(
+            this.coords.x,
+            this.coords.y,
+            this.origins.x + this.posX * this.gap,
+            this.origins.y
+        )
+        new Leg(
+            this.coords.x,
+            this.coords.y,
+            this.origins.x,
+            this.origins.y - this.posY * this.gap
+        )
+    }
+}
+
 class Dot {
     constructor(x, y, color) {
         this.x = x
@@ -108,6 +122,18 @@ class Dot {
         ctx.beginPath()
         ctx.fillStyle = this.color
         ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI)
+        ctx.stroke()
+    }
+}
+
+class Leg {
+    constructor(x, y, z, p) {
+        ctx.beginPath()
+        ctx.moveTo(x, y)
+        ctx.strokeStyle = colors.gray
+        ctx.lineWidth = 0.5
+        ctx.lineTo(z, p)
+        ctx.closePath()
         ctx.stroke()
     }
 }
