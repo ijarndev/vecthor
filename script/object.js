@@ -105,6 +105,9 @@ class Vector {
             this.origins.x,
             this.origins.y - this.posY * this.gap
         )
+
+        ctx.fillStyle = colors.white
+        ctx.fillText(`(${this.posX}; ${this.posY})`, this.coords.x + 5, this.coords.y - 5)
     }
 }
 
