@@ -1,5 +1,8 @@
+const ratio = Math.ceil(window.devicePixelRatio)
 const canvas = document.querySelector('#canvas')
 const ctx = canvas.getContext('2d')
+
+ctx.setTransform(ratio, 0, 0, ratio, 0, 0)
 
 const INPUT = {
     component1: document.querySelector('#c1'),
