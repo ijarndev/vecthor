@@ -13,6 +13,7 @@ Vecthor will generate graphic representations of your vectors based on their coo
 - Calculating perpendicular and parrallel vectors to any vector
 - Finding unitary vector
 - List of all vectors generated and the posibility of edit them
+- Zoom in/out the scale of coordinates system
 - Whatever I come up with when I get bored
 
 #### Screenshots
