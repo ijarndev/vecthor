@@ -42,7 +42,7 @@ function getRandom(array) {
     return array[Math.floor(Math.random() * array.length)]
 }
 
-const COORDS = new Coordinates(TILES, INPUT.range.value)
+const COORDS = new Coordinates(TILES, 20)
 COORDS.render()
 
 // document.addEventListener('keyup', (e) => {
@@ -72,7 +72,7 @@ INPUT.wipeBtn.addEventListener('click', () => {
     wipeLocalStorage()
 })
 
-INPUT.range.addEventListener('change', () => {
-    ctx.clearRect(0, 0, cw, ch)
-    new Coordinates(TILES, INPUT.range.value).render()
-})
+// INPUT.range.addEventListener('change', () => {
+//     ctx.clearRect(0, 0, cw, ch)
+//     new Coordinates(TILES, 20).render()
+// })

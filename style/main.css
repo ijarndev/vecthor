@@ -12,17 +12,10 @@
 
 #navbar {
     position: fixed;
-    padding-right: 40px;
-    width: 100vw;
-    left: 0px;
+    width: 100%;
     bottom: 0px;
-    border-radius: 8px;
     display: flex;
-    gap: 2px;
-    align-items: left;
     justify-content: space-between;
-    flex-wrap: wrap;
-    flex-direction: row;
 }
 
 
@@ -76,9 +69,19 @@ button:active {
 
 .input-holder {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 .range-holder {
     display: flex;
     align-items: center;
+}
+
+.buttons-holder {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
 }
