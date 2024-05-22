@@ -1,5 +1,4 @@
 # Vecthor
-
 Vecthor will generate graphic representations of your vectors based on their coordinates and calculate their properties using HTML Canvas technology.
 
 ### Current features
@@ -15,3 +14,6 @@ Vecthor will generate graphic representations of your vectors based on their coo
 - List of all vectors generated and the posibility of edit them
 - Save in local storage the current work
 - Whatever I come up with when I get bored
+
+#### Screenshots
+![image](https://github.com/ijarndev/vecthor/assets/98632992/af2e772c-1d69-43ed-ae55-3b8e1b7da5ce)
