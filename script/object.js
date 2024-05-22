@@ -86,7 +86,7 @@ class Vector {
     }
     
     render() {
-        ctx.strokeStyle = colors.random
+        ctx.strokeStyle = colors.blue
         ctx.lineTo(this.coords.x, this.coords.y)
         ctx.closePath()
         ctx.stroke()
@@ -106,8 +106,16 @@ class Vector {
             this.origins.y - this.posY * this.gap
         )
 
-        ctx.fillStyle = colors.white
+        const magnitude = (Math.sqrt(Math.pow(this.posX, 2) + Math.pow(this.posY, 2))).toFixed(1)
+        const directionRad = Math.atan2(this.posY / this.posX)
+        const directionDeg = Math.atan2(this.posY / this.posX) * 180 / Math.PI
+
+        console.log(typeof this.posX)
+
+        ctx.fillStyle = 'lightblue'
+        ctx.fillText(`dir: ${Math.floor(directionDeg)}º / ${directionRad.toFixed(2)} rad`, this.coords.x + 5, this.coords.y - 35)
         ctx.fillText(`(${this.posX}; ${this.posY})`, this.coords.x + 5, this.coords.y - 5)
+        ctx.fillText('mag: ' + magnitude,this.coords.x + 5,this.coords.y - 20)
     }
 }
 

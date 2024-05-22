@@ -42,19 +42,19 @@ function getRandom(array) {
 const COORDS = new Coordinates(TILES, INPUT.range.value)
 COORDS.render()
 
-const v = new Vector(3, 3)
+const v = new Vector(4, 2)
 v.render()
 
-document.addEventListener('keyup', (e) => {
-    if(e.key === '1')
-        new Vector(Math.floor(Math.random() * TILES.x / 2), Math.floor(Math.random() * TILES.y / 2)).render()
-    if(e.key === '2')
-        new Vector(Math.floor(Math.random() * TILES.x / -2), Math.floor(Math.random() * TILES.y / 2)).render()
-    if(e.key === '3')
-        new Vector(Math.floor(Math.random() * TILES.x / -2), Math.floor(Math.random() * TILES.y / -2)).render()
-    if(e.key === '4')
-        new Vector(Math.floor(Math.random() * TILES.x / 2), Math.floor(Math.random() * TILES.y / -2)).render()
-})
+// document.addEventListener('keyup', (e) => {
+//     if(e.key === '1')
+//         new Vector(Math.floor(Math.random() * TILES.x / 2), Math.floor(Math.random() * TILES.y / 2)).render()
+//     if(e.key === '2')
+//         new Vector(Math.floor(Math.random() * TILES.x / -2), Math.floor(Math.random() * TILES.y / 2)).render()
+//     if(e.key === '3')
+//         new Vector(Math.floor(Math.random() * TILES.x / -2), Math.floor(Math.random() * TILES.y / -2)).render()
+//     if(e.key === '4')
+//         new Vector(Math.floor(Math.random() * TILES.x / 2), Math.floor(Math.random() * TILES.y / -2)).render()
+// })
 
 INPUT.renderBtn.addEventListener('click', () => {
     const vector = new Vector(INPUT.component1.value, INPUT.component2.value)
